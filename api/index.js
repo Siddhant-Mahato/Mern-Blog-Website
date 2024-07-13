@@ -20,7 +20,7 @@ dotenv.config({ path: envPath });
 
 const app = express();
 app.use(express.json());
-// app.use(cors());  // Use cors middleware
+app.use(cors());  // Use cors middleware
 
 const PORT = process.env.PORT || 3000;
 
