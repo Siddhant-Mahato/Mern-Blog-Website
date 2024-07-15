@@ -23,13 +23,13 @@ return (
             <Sidebar.ItemGroup>
                 
                 <Link to='/dashboard?tab=profile'>
-                    <Sidebar.Item active={tab === 'profile'} icon={FaUser} label={'User'} labelColor='dark' >
+                    <Sidebar.Item active={tab === 'profile'} icon={FaUser} label={'User'} labelColor='dark' as='div' >
                         Profile
                     </Sidebar.Item>
                 </Link>
 
 
-                <Sidebar.Item  icon={GoSignOut} classname="" >
+                <Sidebar.Item  icon={GoSignOut} className="" >
                     Sign out
                 </Sidebar.Item>
 
