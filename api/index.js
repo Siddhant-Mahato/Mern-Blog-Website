@@ -5,7 +5,9 @@ import router from "./routes/index.js";
 import path from "path";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import cors from "cors";  // Import cors
+import cors from "cors"; 
+import cookieParser from "cookie-parser";
+
 
 // Get the directory name of the current module
 const __filename = fileURLToPath(import.meta.url);
@@ -20,7 +22,9 @@ dotenv.config({ path: envPath });
 
 const app = express();
 app.use(express.json());
-app.use(cors());  // Use cors middleware
+app.use(cors());
+app.use(cookieParser());
+
 
 const PORT = process.env.PORT || 3000;
 
