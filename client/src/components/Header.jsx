@@ -5,6 +5,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import { FaMoon , FaSun } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleTheme } from '../redux/theme/themeSlice';
+import { signoutSuccess } from "../redux/user/userSlice";
 
 
 const Header = () => {
@@ -12,7 +13,30 @@ const Header = () => {
     const path = useLocation().pathname;
     const dispatch = useDispatch();
     const { currentUser } = useSelector((state) => state.user);
-    const {theme} = useSelector((state) => state.theme);
+    const { theme } = useSelector((state) => state.theme);
+    
+
+    const handleSignout = async () => {
+        try
+        {
+            const res = await fetch("/api/signout", {
+                method: "POST",
+            });
+            const data = await res.json();
+            if (!res.ok)
+            {
+                console.log(data.message);
+            }
+            else
+            {
+                dispatch(signoutSuccess());
+            }
+        }
+        catch (error)
+        {
+            console.log(error.message);
+        }
+    };
 return (
     <Navbar className='border-b-2'>
         <Link to="/" className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white' >
@@ -66,10 +90,13 @@ return (
 
                         <Dropdown.Divider />
                         
-                        <Dropdown.Item>
-                            Sign Out
-                            {/* onClick={() => firebase.auth().signOut()} */}
-                        </Dropdown.Item>
+                        <Link to={"/sign-in"} onClick={handleSignout}>
+                            <Dropdown.Item>
+                                Sign Out
+                            </Dropdown.Item>
+                        </Link>
+
+                        
                     </Dropdown>
                     
                 ) : (
