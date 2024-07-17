@@ -2,7 +2,7 @@ import express from "express";
 import { google, signin, signup } from "../controllers/auth.controller.js";
 import { deleteUser, signout, updateUser } from "../controllers/user.controller.js";
 import { verifyToken } from "../middleware/verifyUser.js";
-import { create } from "../controllers/post.controller.js";
+import { create, getposts } from "../controllers/post.controller.js";
 
 const router = express.Router();
 
@@ -14,7 +14,8 @@ router.post("/signout",signout);
 
 router.put("/update/:userId", verifyToken, updateUser);
 router.delete("/delete/:userId", verifyToken, deleteUser);
-router.post("/post/create", verifyToken,create);
+router.post("/post/create", verifyToken, create);
+router.get("/post/getposts",getposts)
 
 
 export default router;
