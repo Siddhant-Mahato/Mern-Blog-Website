@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { signoutSuccess } from '../redux/user/userSlice';
 import { HiDocumentText } from "react-icons/hi2";
+import { HiOutlineUserGroup } from "react-icons/hi2";
+
 
 
 
@@ -25,7 +27,7 @@ const DashSideBar = () => {
         const urlParams = new URLSearchParams(location.search);
 
         const tabFromUrl = urlParams.get('tab');
-        
+
         if (tabFromUrl)
         {
             setTab(tabFromUrl);
@@ -73,6 +75,18 @@ return (
                                 Posts
                             </Sidebar.Item>
                         </Link>
+
+                    )
+                }
+
+                {
+                    currentUser.isAdmin && (
+                        <Link to='/dashboard?tab=users'>
+                            <Sidebar.Item active={tab === 'users'} icon={HiOutlineUserGroup} labelColor='dark' as='div' >
+                                User's
+                            </Sidebar.Item>
+                        </Link>
+
                     )
                 }
 
