@@ -119,6 +119,10 @@ return (
                     <option value='javascript'>JavaScript</option>
                     <option value='reactjs'>React.js</option>
                     <option value='nextjs'>Next.js</option>
+                    <option value='html'>Html</option>
+                    <option value='tailwindcss'>Tailwind CSS</option>
+                    <option value='css'>CSS</option>
+                    <option value='git'>Git</option>
                 </Select>
 
             </div>
