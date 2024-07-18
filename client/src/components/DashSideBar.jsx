@@ -7,6 +7,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { signoutSuccess } from '../redux/user/userSlice';
 import { HiDocumentText } from "react-icons/hi2";
 import { HiOutlineUserGroup } from "react-icons/hi2";
+import { BiCommentDetail } from "react-icons/bi";
+
 
 
 
@@ -84,6 +86,21 @@ return (
                         <Link to='/dashboard?tab=users'>
                             <Sidebar.Item active={tab === 'users'} icon={HiOutlineUserGroup} labelColor='dark' as='div' >
                                 User's
+                            </Sidebar.Item>
+                        </Link>
+
+                    )
+                }
+
+                {
+                    currentUser.isAdmin && (
+                        <Link to='/dashboard?tab=comments'>
+                            <Sidebar.Item
+                                active={tab === 'comments'}
+                                icon={BiCommentDetail}
+                                as='div'
+                            >
+                                Comments
                             </Sidebar.Item>
                         </Link>
 

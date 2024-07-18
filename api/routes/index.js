@@ -3,7 +3,7 @@ import { google, signin, signup } from "../controllers/auth.controller.js";
 import { deleteUser, getUser, getUsers, signout, updateUser } from "../controllers/user.controller.js";
 import { verifyToken } from "../middleware/verifyUser.js";
 import { create, deletepost, getposts, updatepost } from "../controllers/post.controller.js";
-import { createComment, deleteComment, editComment, getPostComments, likeComment } from "../controllers/comment.controller.js";
+import { createComment, deleteComment, editComment, getcomments, getPostComments, likeComment } from "../controllers/comment.controller.js";
 
 const router = express.Router();
 
@@ -41,7 +41,10 @@ router.put("/comment/likeComment/:commentId", verifyToken, likeComment);
 router.put("/comment/editComment/:commentId", verifyToken, editComment);
 
 
-router.delete("/comment/deleteComment/:commentId", verifyToken,deleteComment);
+router.delete("/comment/deleteComment/:commentId", verifyToken, deleteComment);
+
+
+router.get("/comment/getcomments",verifyToken,getcomments);
 
 
 
