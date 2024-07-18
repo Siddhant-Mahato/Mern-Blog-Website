@@ -3,6 +3,7 @@ import { google, signin, signup } from "../controllers/auth.controller.js";
 import { deleteUser, getUsers, signout, updateUser } from "../controllers/user.controller.js";
 import { verifyToken } from "../middleware/verifyUser.js";
 import { create, deletepost, getposts, updatepost } from "../controllers/post.controller.js";
+import { createComment } from "../controllers/comment.controller.js";
 
 const router = express.Router();
 
@@ -19,5 +20,9 @@ router.get("/post/getposts",getposts)
 router.delete("/post/deletepost/:postId/:userId", verifyToken, deletepost);
 router.put("/post/updatepost/:postId/:userId", verifyToken, updatepost)
 router.get("/user/getusers", verifyToken, getUsers)
+
+
+router.post("/comment/create",verifyToken,createComment)
+
 
 export default router;
