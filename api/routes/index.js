@@ -3,7 +3,7 @@ import { google, signin, signup } from "../controllers/auth.controller.js";
 import { deleteUser, getUser, getUsers, signout, updateUser } from "../controllers/user.controller.js";
 import { verifyToken } from "../middleware/verifyUser.js";
 import { create, deletepost, getposts, updatepost } from "../controllers/post.controller.js";
-import { createComment, getPostComments, likeComment } from "../controllers/comment.controller.js";
+import { createComment, editComment, getPostComments, likeComment } from "../controllers/comment.controller.js";
 
 const router = express.Router();
 
@@ -36,5 +36,10 @@ router.get("/comment/getPostComment/:postId", getPostComments)
 router.get("/user/:userId", getUser);
 
 router.put("/comment/likeComment/:commentId", verifyToken, likeComment);
+
+
+router.put("/comment/editComment/:commentId", verifyToken, editComment);
+
+
 
 export default router;

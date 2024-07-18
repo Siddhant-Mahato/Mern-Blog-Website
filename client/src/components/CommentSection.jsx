@@ -94,7 +94,7 @@ const CommentSection = ({ postId }) => {
             if (res.ok)
             {
                 const data = await res.json();
-                
+
                 setComments(
                     comments.map((comment) =>
                     comment._id === commentId
@@ -113,6 +113,12 @@ const CommentSection = ({ postId }) => {
         {
             console.log(error.message);
         }
+    };
+
+    const handleEdit = async (comment, editedContent) => {
+        setComments(
+            comments.map((c) => (c._id === comment._id ? { ...c, content: editedContent } : c))
+        );
     };
 
 return (
@@ -193,7 +199,7 @@ return (
                                     key={comment._id}
                                     comment={comment}
                                     onLike={handleLike}
-                                    // onEdit={handleEdit}
+                                    onEdit={handleEdit}
                                     // onDelete={(commentId) => {
                                     //     setShowModal(true);
                                     //     setCommentToDelete(commentId);
