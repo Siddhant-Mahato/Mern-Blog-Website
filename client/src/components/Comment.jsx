@@ -6,7 +6,7 @@ import { Button, Textarea } from 'flowbite-react';
 
 
 
-const Comment = ({ comment, onLike,onEdit }) => {
+const Comment = ({ comment, onLike,onEdit,onDelete }) => {
     
 
     const [user, setUser] = useState({});
@@ -157,8 +157,8 @@ return (
 
                                             <button
                                                 type='button'
-                                                // onClick={() => onDelete(comment._id)}
-                                                // className='text-gray-400 hover:text-red-500'
+                                                onClick={() => onDelete(comment._id)}
+                                                className='text-gray-400 hover:text-red-500'
                                             >
                                                 Delete
                                             </button>
